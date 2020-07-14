@@ -13,16 +13,16 @@ export const GifExpertApp = () => {
     return (
         <div>
             <h2>Gif Expert App</h2>
-            <AddCategory />
+            <AddCategory setCategories={ setCategories } />
             <hr/>
             
-            <ol>
+            <ul>
                 {
                     categories.map( category => {
                         return <li key={ category }>{ category }</li>
                     })
                 }
-            </ol>
+            </ul>
         </div>
     )
 }

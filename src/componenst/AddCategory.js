@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-export const AddCategory = () => {
+export const AddCategory = ({ setCategories }) => {
 
-    const [inputValue, setinputValue] = useState('')
+    const [inputValue, setinputValue] = useState('');
 
     //Funcion que controla el cambio en la caja de texto
     const handleInputChange = (e) => {
@@ -12,6 +13,11 @@ export const AddCategory = () => {
     //Funcion que observa el evento de envio del formulario
     const handleSubmit = (e) => {
         e.preventDefault();
+        if( inputValue.trim().length >2 ){
+            //recibiendo solamente la funcion, debemos pasar un callback donde hacemos referencia al estado anterior
+            setCategories(categories => [...categories, inputValue]);
+            setinputValue('');
+        }
     }
 
     return (
@@ -23,4 +29,9 @@ export const AddCategory = () => {
             />            
         </form>
     )
+}
+
+//Usando PropTypes para indicar que setCateries es un parametro obligatorio
+AddCategory.propTypes = {
+    setCategories: PropTypes.func.isRequired
 }
