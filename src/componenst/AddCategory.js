@@ -15,7 +15,7 @@ export const AddCategory = ({ setCategories }) => {
         e.preventDefault();
         if( inputValue.trim().length >2 ){
             //recibiendo solamente la funcion, debemos pasar un callback donde hacemos referencia al estado anterior
-            setCategories(categories => [...categories, inputValue]);
+            setCategories(categories => [inputValue, ...categories]);
             setinputValue('');
         }
     }
